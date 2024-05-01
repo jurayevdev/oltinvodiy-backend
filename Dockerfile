@@ -18,11 +18,11 @@ FROM base as build
 
 # Install packages needed to build node modules
 RUN apt-get update -qq && \
-    apt-get install -y python-is-python3 pkg-config build-essential 
+    apt-get install -y python-is-python3 pkg-config build-essential
 
 # Install node modules
 COPY --link package-lock.json package.json ./
-RUN npm ci --include=dev
+RUN npm ci --include=dev npm install --force
 
 # Copy application code
 COPY --link . .

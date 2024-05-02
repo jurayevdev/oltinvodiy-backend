@@ -29,7 +29,6 @@ export class CreateMenuDto {
     image: any;
 
     @ApiProperty({example: "1", description: "Categorya ID si"})
-    @IsInt()
     @IsNotEmpty()
     category_id: number;
 }

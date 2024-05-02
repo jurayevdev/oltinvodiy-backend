@@ -57,11 +57,8 @@ export class CategoryController {
   @ApiOperation({ summary: "Categoryani ID si bo'yicha o'zgartirish" })
   @Roles('ADMIN')
   @UseGuards(RolesGuard)
-  @Put('update/:id')
-  async updateCategpry(
-    @Param('id') id: string,
-    @Body() updateCategoryDto: UpdateCategoryDto,
-  ) {
-    return this.categoryService.updateCategory(+id, updateCategoryDto);
-  }
+  @Put("update/:id")
+    async updateCategory(@Param('id') id: string, @Body() updateCategory: UpdateCategoryDto){
+      return this.categoryService.updateCategory(+id, updateCategory)
+    }
 }

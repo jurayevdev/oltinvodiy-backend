@@ -6,6 +6,7 @@ interface MenuAttr {
     title_rus: string;
     body_uzb: string;
     body_rus: string;
+    price: string;
     image: string;
 }
 
@@ -37,6 +38,11 @@ export class Menu extends Model<Menu, MenuAttr> {
         type: DataType.TEXT,
     })
     body_rus: string;
+
+    @Column({
+        type: DataType.STRING,
+    })
+    price: string;
 
     @Column({
         type: DataType.STRING,

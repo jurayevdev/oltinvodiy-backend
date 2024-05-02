@@ -20,6 +20,11 @@ export class CreateMenuDto {
     @IsNotEmpty()
     body_rus: string;
 
+    @ApiProperty({example: "1000", description: "Menu price"})
+    @IsString()
+    @IsNotEmpty()
+    price: string;
+
     @ApiProperty({example: "Rasim", description: "Menu rasmi"})
     image: any;
 

@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Param, Delete, Res, UseGuards, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Res,
+  UseGuards,
+  Put,
+} from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { Roles } from '../decorators/roles-auth-decorator';
@@ -8,17 +18,19 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 import { Category } from './models/category.model';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 
-
-@ApiTags("Categorya")
+@ApiTags('Categorya')
 @Controller('category')
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
   @ApiOperation({ summary: "Categorya qo'shish" })
-  @Roles("ADMIN")
+  @Roles('ADMIN')
   @UseGuards(RolesGuard)
   @Post('create')
-  async create(@Body() createCategoryDto: CreateCategoryDto, @Res({ passthrough: true }) res: Response) {
+  async create(
+    @Body() createCategoryDto: CreateCategoryDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
     return this.categoryService.createCategory(createCategoryDto, res);
   }
 
@@ -30,23 +42,26 @@ export class CategoryController {
 
   @ApiOperation({ summary: "Categorya ID si bo'yicha ko'rish" })
   @Get('find/:id')
-  async getOneCategory(@Param("id") id: string): Promise<Category> {
+  async getOneCategory(@Param('id') id: string): Promise<Category> {
     return this.categoryService.getOneCategory(+id);
   }
 
   @ApiOperation({ summary: "Categorya ID si bo'yicha o'chirish" })
-  @Roles("ADMIN")
+  @Roles('ADMIN')
   @UseGuards(RolesGuard)
   @Delete('delete/:id')
-  async delOneCategory(@Param("id") id: string) {
+  async delOneCategory(@Param('id') id: string) {
     return this.categoryService.delOneCategory(+id);
   }
 
-  @ApiOperation( {summary: "Categoryani ID si bo'yicha o'zgartirish"})
-  @Roles("ADMIN")
+  @ApiOperation({ summary: "Categoryani ID si bo'yicha o'zgartirish" })
+  @Roles('ADMIN')
   @UseGuards(RolesGuard)
-  @Put("update/:id")
-    async updateCategory(@Param('id') id: string, @Body() updateCategory: UpdateCategoryDto){
-      return this.categoryService.updateCategory(+id, updateCategory)
-    }
+  @Put('update/:id')
+  async updateCategpry(
+    @Param('id') id: string,
+    @Body() updateCategoryDto: UpdateCategoryDto,
+  ) {
+    return this.categoryService.updateCategory(+id, updateCategoryDto);
+  }
 }

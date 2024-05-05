@@ -52,7 +52,11 @@ export class MenuService {
     await this.menuRepo.destroy({ where: { id } });
 
     if (menu.image !== 'null') {
-      await this.fileService.deleteFile(menu.image);
+      try {
+        await this.fileService.deleteFile(menu.image);
+      } catch (error) {
+        console.log(error)
+      }
     }
     return {
       message: "Menu o'chirildi",
@@ -69,7 +73,11 @@ export class MenuService {
       let oldMenuImage = await this.menuRepo.findOne({ where: { id } });
       try {
         if (oldMenuImage.image !== 'null') {
-          await this.fileService.deleteFile(oldMenuImage.image);
+          try {
+            await this.fileService.deleteFile(oldMenuImage.image);
+          } catch (error) {
+            console.log(error);
+          }
         }
         image_name = await this.fileService.createFile(image);
       } catch (error) {

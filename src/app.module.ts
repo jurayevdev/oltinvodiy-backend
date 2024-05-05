@@ -19,6 +19,8 @@ import { Gallery } from './gallery/models/gallery.model';
 import { SocialMediaModule } from './social-media/social-media.module';
 import { SocialMedia } from './social-media/models/social-media.model';
 import { TelegrafModule } from 'nestjs-telegraf';
+import { PdfMenuModule } from './pdf-menu/pdf-menu.module';
+import { PdfMenu } from './pdf-menu/models/pdf-menu.model';
 
 @Module({
   imports: [
@@ -30,7 +32,7 @@ import { TelegrafModule } from 'nestjs-telegraf';
       username: process.env.POSTGRES_USER,
       password: String(process.env.POSTGRES_PASS),
       database: process.env.POSTGRES_DB,
-      models: [Admin, Team, Menu, Category, Contact, Gallery, SocialMedia],
+      models: [Admin, Team, Menu, Category, Contact, Gallery, SocialMedia, PdfMenu],
       autoLoadModels: true,
       logging: false,
     }),
@@ -47,7 +49,8 @@ import { TelegrafModule } from 'nestjs-telegraf';
     CategoryModule,
     ContactModule,
     GalleryModule,
-    SocialMediaModule
+    SocialMediaModule,
+    PdfMenuModule
   ],
   controllers: [],
   providers: [],

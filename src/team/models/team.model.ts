@@ -3,10 +3,13 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
 interface TeamAttr {
     name_uzb: string;
     name_rus: string;
+    name_eng: string;
     profession_uzb: string;
     profession_rus: string;
+    profession_eng: string;
     info_uzb: string;
     info_rus: string;
+    info_eng: string;
     image: string;
 }
 
@@ -32,12 +35,22 @@ export class Team extends Model<Team, TeamAttr> {
     @Column({
         type: DataType.STRING,
     })
+    name_eng: string;
+
+    @Column({
+        type: DataType.STRING,
+    })
     profession_uzb: string;
 
     @Column({
         type: DataType.STRING,
     })
     profession_rus: string;
+
+    @Column({
+        type: DataType.STRING,
+    })
+    profession_eng: string;
 
     @Column({
         type: DataType.TEXT,
@@ -48,6 +61,11 @@ export class Team extends Model<Team, TeamAttr> {
         type: DataType.TEXT,
     })
     info_rus: string;
+
+    @Column({
+        type: DataType.TEXT,
+    })
+    info_eng: string;
 
     @Column({
         type: DataType.STRING,

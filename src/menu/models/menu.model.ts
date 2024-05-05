@@ -4,8 +4,10 @@ import { Category } from "src/category/models/category.model";
 interface MenuAttr {
     title_uzb: string;
     title_rus: string;
+    title_eng: string;
     body_uzb: string;
     body_rus: string;
+    body_eng: string;
     price: string;
     image: string;
 }
@@ -30,6 +32,11 @@ export class Menu extends Model<Menu, MenuAttr> {
     title_rus: string;
 
     @Column({
+        type: DataType.STRING,
+    })
+    title_eng: string;
+
+    @Column({
         type: DataType.TEXT,
     })
     body_uzb: string;
@@ -38,6 +45,11 @@ export class Menu extends Model<Menu, MenuAttr> {
         type: DataType.TEXT,
     })
     body_rus: string;
+
+    @Column({
+        type: DataType.TEXT,
+    })
+    body_eng: string;
 
     @Column({
         type: DataType.STRING,

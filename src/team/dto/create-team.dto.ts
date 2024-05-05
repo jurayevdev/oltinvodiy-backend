@@ -12,6 +12,11 @@ export class CreateTeamDto {
     @IsNotEmpty()
     name_rus: string;
 
+    @ApiProperty({example: "Name", description: "Jamoani nomi eng"})
+    @IsString()
+    @IsNotEmpty()
+    name_eng: string;
+
     @ApiProperty({example: "Jamoa", description: "Jamoa lavozimi uzb"})
     @IsString()
     @IsNotEmpty()
@@ -22,6 +27,11 @@ export class CreateTeamDto {
     @IsNotEmpty()
     profession_rus: string;
 
+    @ApiProperty({example: "Jamoa", description: "Jamoa lavozimi eng"})
+    @IsString()
+    @IsNotEmpty()
+    profession_eng: string;
+
     @ApiProperty({example: "info", description: "Jamoa ma'lumoti uzb"})
     @IsNotEmpty()
     info_uzb: string;
@@ -29,6 +39,10 @@ export class CreateTeamDto {
     @ApiProperty({example: "info", description: "Jamoa ma'lumoti rus"})
     @IsNotEmpty()
     info_rus: string;
+
+    @ApiProperty({example: "info", description: "Jamoa ma'lumoti eng"})
+    @IsNotEmpty()
+    info_eng: string;
 
     @ApiProperty({example: "Rasim", description: "Jamoa rasmi"})
     image: any;

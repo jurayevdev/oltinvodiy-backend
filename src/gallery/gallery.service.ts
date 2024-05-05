@@ -50,7 +50,11 @@ export class GalleryService {
     await this.galleryRepo.destroy({ where: { id } });
 
     if (gallery.image !== 'null') {
-      await this.fileService.deleteFile(gallery.image);
+      try {
+        await this.fileService.deleteFile(gallery.image);
+      } catch (error) {
+        console.log(error);
+      }
     }
     return {
       message: "Rasim o'chirildi",

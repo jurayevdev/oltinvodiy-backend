@@ -11,4 +11,9 @@ export class CreateCategoryDto {
     @IsString()
     @IsNotEmpty()
     name_rus: string;
+
+    @ApiProperty({example: "Name", description: "Categorya title eng"})
+    @IsString()
+    @IsNotEmpty()
+    name_eng: string;
 }

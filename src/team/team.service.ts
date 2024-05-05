@@ -51,7 +51,11 @@ export class TeamService {
     await this.teamRepo.destroy({ where: { id } });
 
     if (team.image !== 'null') {
-      await this.fileService.deleteFile(team.image);
+      try {
+        await this.fileService.deleteFile(team.image);
+      } catch (error) {
+        console.log(error);
+      }
     }
     return {
       message: "Jamoa o'chirildi",
@@ -68,7 +72,11 @@ export class TeamService {
       let oldTeamImage = await this.teamRepo.findOne({ where: { id } });
       try {
         if (oldTeamImage.image !== 'null') {
-          await this.fileService.deleteFile(oldTeamImage.image);
+          try {
+            await this.fileService.deleteFile(oldTeamImage.image);
+          } catch (error) {
+            console.log(error)
+          }
         }
         image_name = await this.fileService.createFile(image);
       } catch (error) {

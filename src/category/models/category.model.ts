@@ -31,6 +31,6 @@ export class Category extends Model<Category, CategoryAttr> {
     })
     name_eng: string;
 
-    @HasMany(() => Menu)
+    @HasMany(() => Menu, { onDelete: 'CASCADE'})
     menu: Menu;
 }
